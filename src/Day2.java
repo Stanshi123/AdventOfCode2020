@@ -59,17 +59,7 @@ public class Day2 {
     }
 
     public static void main(String[] args) {
-        List<String> entries = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(new File("day2.in"));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                entries.add(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        List<String> entries = IOUtils.readEveryLine("day2.in");
         System.out.println(checkValid(entries));
         System.out.println(checkValidNewPolicy(entries));
     }

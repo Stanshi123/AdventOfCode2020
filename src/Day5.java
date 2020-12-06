@@ -1,33 +1,19 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Day5 {
 
     static int calculateId(String seat) {
-        int low = 0, high = 127;
-        for (int i = 0; i < 7; i++) {
-            char c = seat.charAt(i);
-            if (c == 'F') { // F keep lower half
-                high = low + (high - low) / 2;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < seat.length(); i++) {
+            if (seat.charAt(i) == 'F' || seat.charAt(i) == 'L') {
+                sb.append('0');
             } else {
-                low = low + (high - low) / 2 + 1;
+                sb.append('1');
             }
         }
-        int row = low;
-
-        low = 0; high = 7;
-        for (int i = 0; i < 3; i++) {
-            char c = seat.charAt(7 + i);
-            if (c == 'L') { // L keep lower half
-                high = low + (high - low) / 2;
-            } else {
-                low = low + (high - low) / 2 + 1;
-            }
-        }
-        int col = low;
-
-        return 8 * row + col;
+        return Integer.parseInt(sb.toString(), 2);
     }
 
     static List<Integer> ids(List<String> seats) {
@@ -59,16 +45,7 @@ public class Day5 {
     }
 
     public static void main(String[] args) {
-        List<String> seats = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(new File("day5.in"));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                seats.add(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        List<String> seats = IOUtils.readEveryLine("day5.in");
         System.out.println(biggestId(seats));
         System.out.println(findMissingId(ids(seats)));
     }

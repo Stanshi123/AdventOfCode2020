@@ -1,8 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -86,21 +82,9 @@ public class Day4 {
 
     static int countExists(List<String> passports) {
         int count = 0;
-        StringBuilder sb = new StringBuilder();
-        for (String line: passports) {
-            if (line.equals("")) {
-                if (checkExists(sb.toString())) {
+        for (String passport: passports) {
+            if (checkExists(passport)) {
                     count++;
-                }
-                sb.setLength(0);
-            } else {
-                sb.append(" ");
-                sb.append(line);
-            }
-        }
-        if (sb.length() != 0) {
-            if (checkExists(sb.toString())) {
-                count++;
             }
         }
         return count;
@@ -109,37 +93,16 @@ public class Day4 {
     static int countValid(List<String> passports) {
         int count = 0;
 
-        StringBuilder sb = new StringBuilder();
-        for (String line: passports) {
-            if (line.equals("")) {
-                if (checkValid(sb.toString())) {
+        for (String passport: passports) {
+            if (checkValid(passport)) {
                     count++;
-                }
-                sb.setLength(0);
-            } else {
-                sb.append(" ");
-                sb.append(line);
-            }
-        }
-        if (sb.length() != 0) {
-            if (checkValid(sb.toString())) {
-                count++;
             }
         }
         return count;
     }
 
     public static void main(String[] args) {
-        List<String> passports = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(new File("day4.in"));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                passports.add(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        List<String> passports = IOUtils.readAndConcatenate("day4.in", ' ');
         System.out.println(countExists(passports));
         System.out.println(countValid(passports));
     }

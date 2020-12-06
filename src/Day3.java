@@ -1,8 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Day3 {
     static int countTreeEncounter(List<String> grid, int right, int down) {
@@ -25,16 +21,7 @@ public class Day3 {
 
 
     public static void main(String[] args) {
-        List<String> grid = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(new File("day3.in"));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                grid.add(line);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        List<String> grid = IOUtils.readEveryLine("day3.in");
         System.out.println(countTreeEncounter(grid,3 ,1));
         System.out.println(countTreeEncounter(grid,1 ,1));
         System.out.println(countTreeEncounter(grid,5 ,1));

@@ -42,17 +42,7 @@ public class Day1 {
     }
 
     public static void main(String[] args) {
-        List<Integer> nums = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(new File("day1.in"));
-            while (scanner.hasNextInt()) {
-                int num = scanner.nextInt();
-                nums.add(num);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+        List<Integer> nums = IOUtils.readEveryLineInt("day1.in");
         System.out.println(reportRepair(nums));
         System.out.println(reportTriplets(nums));
     }
