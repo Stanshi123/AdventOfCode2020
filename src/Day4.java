@@ -102,7 +102,7 @@ public class Day4 {
     }
 
     public static void main(String[] args) {
-        List<String> passports = IOUtils.readAndConcatenate("day4.in", ' ');
+        List<String> passports = IOUtils.readAndConcatenate("day4.in", " ");
         System.out.println(countExists(passports));
         System.out.println(countValid(passports));
     }

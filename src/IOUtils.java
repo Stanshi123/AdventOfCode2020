@@ -57,7 +57,7 @@ public class IOUtils {
         return groups;
     }
 
-    public static List<String> readAndConcatenate(String filename, char delim) {
+    public static List<String> readAndConcatenate(String filename, String delim) {
         List<List<String>> groups = readPerGroup(filename);
         List<String> result = new ArrayList<>();
         for (List<String> group: groups) {
