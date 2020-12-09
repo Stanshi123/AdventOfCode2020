@@ -33,6 +33,20 @@ public class IOUtils {
         return lines;
     }
 
+    public static List<Long> readEveryLineLong(String filename) {
+        List<Long> lines = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File(filename));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                lines.add(Long.parseLong(line));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return lines;
+    }
+
     public static List<List<String>> readPerGroup(String filename) {
         List<List<String>> groups = new ArrayList<>();
         List<String> group = new ArrayList<>();

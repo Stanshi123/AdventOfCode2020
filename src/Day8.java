@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Day8 {
 
-    static boolean validExecution(List<String> commands, int[] acc, Set<Integer> visited) {
+    static boolean execute(List<String> commands, int[] acc, Set<Integer> visited) {
         int counter = 0;
 
         String regex = "(acc|jmp|nop) (\\+|-)(\\d+)";
@@ -44,7 +44,7 @@ public class Day8 {
 
     static int accBeforeDuplicateCommand(List<String> commands) {
         int[] acc = new int[]{0};
-        validExecution(commands, acc, new HashSet<>());
+        execute(commands, acc, new HashSet<>());
         return acc[0];
     }
 
@@ -60,12 +60,12 @@ public class Day8 {
     static int fixAndRun(List<String> commands) {
         Set<Integer> visited = new HashSet<>();
         int[] acc = new int[]{0};
-        validExecution(commands, acc, visited);
+        execute(commands, acc, visited);
 
         for (int i : visited) {
             flipCommand(commands, i);
             int[] test_acc = new int[]{0};
-            if (validExecution(commands, test_acc, new HashSet<>())) {
+            if (execute(commands, test_acc, new HashSet<>())) {
                 return test_acc[0];
             }
             flipCommand(commands, i);
