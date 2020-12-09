@@ -1,13 +1,6 @@
 package main
 
-import (
-	"sort"
-)
-
-type int64Arr []int64
-func (e int64Arr) len() int           { return len(e) }
-func (e int64Arr) less(i, j int) bool { return e[i] < e[j] }
-func (e int64Arr) swap(i, j int)      { e[i], e[j] = e[j], e[i] }
+import "sort"
 
 func part1(nums []int64) int64 {
 	set := make(map[int64]bool)
