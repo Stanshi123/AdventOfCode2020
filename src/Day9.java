@@ -63,7 +63,7 @@ public class Day9 {
     }
 
     public static void main(String[] args) {
-        List<Long> nums = IOUtils.readEveryLineLong("day9.in");
+        List<Long> nums = IOUtils.readEveryLineLong("input/day9.in");
         Long firstInvalid = firstInvalid(nums);
         System.out.println(firstInvalid);
         System.out.println(findWeakness(nums, firstInvalid));

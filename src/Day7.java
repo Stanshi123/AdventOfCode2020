@@ -83,7 +83,7 @@ public class Day7 {
     }
 
     public static void main(String[] args) {
-        Map<String, Bag> map = parseRules(IOUtils.readEveryLine("day7.in"));
+        Map<String, Bag> map = parseRules(IOUtils.readEveryLine("input/day7.in"));
         System.out.println(countOutsideBags(map, "shiny gold"));
         System.out.println(countInsideBags(map, "shiny gold"));
     }

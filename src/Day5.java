@@ -45,7 +45,7 @@ public class Day5 {
     }
 
     public static void main(String[] args) {
-        List<String> seats = IOUtils.readEveryLine("day5.in");
+        List<String> seats = IOUtils.readEveryLine("input/day5.in");
         System.out.println(biggestId(seats));
         System.out.println(findMissingId(ids(seats)));
     }

@@ -59,7 +59,7 @@ public class Day2 {
     }
 
     public static void main(String[] args) {
-        List<String> entries = IOUtils.readEveryLine("day2.in");
+        List<String> entries = IOUtils.readEveryLine("input/day2.in");
         System.out.println(checkValid(entries));
         System.out.println(checkValidNewPolicy(entries));
     }

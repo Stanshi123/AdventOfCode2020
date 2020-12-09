@@ -21,7 +21,7 @@ public class Day3 {
 
 
     public static void main(String[] args) {
-        List<String> grid = IOUtils.readEveryLine("day3.in");
+        List<String> grid = IOUtils.readEveryLine("input/day3.in");
         System.out.println(countTreeEncounter(grid,3 ,1));
         System.out.println(countTreeEncounter(grid,1 ,1));
         System.out.println(countTreeEncounter(grid,5 ,1));

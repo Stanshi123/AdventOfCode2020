@@ -42,7 +42,7 @@ public class Day1 {
     }
 
     public static void main(String[] args) {
-        List<Integer> nums = IOUtils.readEveryLineInt("day1.in");
+        List<Integer> nums = IOUtils.readEveryLineInt("input/day1.in");
         System.out.println(reportRepair(nums));
         System.out.println(reportTriplets(nums));
     }

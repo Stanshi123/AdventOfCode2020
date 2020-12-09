@@ -30,7 +30,7 @@ public class Day6 {
         return count;
     }
     public static void main(String[] args) {
-        System.out.println(countUnionSum(IOUtils.readAndConcatenate("day6.in","")));
-        System.out.println(countIntersectSum(IOUtils.readPerGroup("day6.in")));
+        System.out.println(countUnionSum(IOUtils.readAndConcatenate("input/day6.in","")));
+        System.out.println(countIntersectSum(IOUtils.readPerGroup("input/day6.in")));
     }
 }

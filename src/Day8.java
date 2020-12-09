@@ -75,7 +75,7 @@ public class Day8 {
 
 
     public static void main(String[] args) {
-        List<String> commands = IOUtils.readEveryLine("day8.in");
+        List<String> commands = IOUtils.readEveryLine("input/day8.in");
         System.out.println(accBeforeDuplicateCommand(commands));
         System.out.println(fixAndRun(commands));
     }
