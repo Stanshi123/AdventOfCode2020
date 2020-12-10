@@ -15,8 +15,7 @@ func part1(nums []int64) int64 {
 
 func part2(nums []int64) int64 {
 	sort.Slice(nums, func(i, j int) bool { return nums[i] < nums[j]})
-	for i, num := range nums {
-		if i >= len(nums) - 2 { break }
+	for i, num := range nums[0: len(nums) - 2] {
 		if i != 0 && nums[i - 1] == num { continue }
 		j := i + 1
 		k := len(nums) - 1
