@@ -19,6 +19,17 @@ public class IOUtils {
         return lines;
     }
 
+    public static char[][] readAsGrid(String filename) {
+        List<String> lines = readEveryLine(filename);
+
+        char[][] ret = new char[lines.size()][];
+        for (int i = 0; i < lines.size(); i++) {
+            ret[i] = lines.get(i).toCharArray();
+        }
+
+        return ret;
+    }
+
     public static List<Integer> readEveryLineInt(String filename) {
         List<Integer> lines = new ArrayList<>();
         try {
