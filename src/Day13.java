@@ -34,13 +34,9 @@ public class Day13 {
         long M = remainders.stream()
                 .mapToLong(e -> e[0])
                 .reduce(1, Math::multiplyExact);
-
-        List<Long> t = remainders.stream()
-                .map(e -> modInv(M / e[0], e[0]))
-                .collect(Collectors.toList());
-
-        long x = IntStream.range(0, t.size())
-                .mapToLong(i -> remainders.get(i)[1] * t.get(i) * (M / remainders.get(i)[0]))
+        
+        long x = remainders.stream()
+                .mapToLong(e -> e[1] * modInv(M / e[0], e[0]) * (M / e[0]))
                 .sum();
 
         while (x - M > 0) {
