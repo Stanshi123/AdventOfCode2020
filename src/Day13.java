@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Day13 {
 
@@ -22,29 +25,23 @@ public class Day13 {
 
     static long part2(String input) {
         String[] ids = input.split(",");
-        List<int[]> remainders = new ArrayList<>();
-
-        for (int i = 0; i < ids.length; i++) {
-            if (!ids[i].equals("x")) {
-                remainders.add(new int[]{Integer.parseInt(ids[i]), getRemainder(i, Integer.parseInt(ids[i]))});
-            }
-        }
+        List<int[]> remainders = IntStream.range(0, ids.length)
+                .filter(i -> !ids[i].equals("x"))
+                .mapToObj(i -> new int[]{Integer.parseInt(ids[i]), getRemainder(i, Integer.parseInt(ids[i]))})
+                .collect(Collectors.toList());
 
         // Chinese Remainder Theorem
-        long M = 1;
-        for (int[] rem: remainders) {
-            M *= rem[0];
-        }
+        long M = remainders.stream()
+                .mapToLong(e -> e[0])
+                .reduce(1, Math::multiplyExact);
 
-        long[] t = new long[remainders.size()];
-        for (int i = 0; i < t.length; i++) {
-            t[i] = modInv(M / remainders.get(i)[0], remainders.get(i)[0]);
-        }
+        List<Long> t = remainders.stream()
+                .map(e -> modInv(M / e[0], e[0]))
+                .collect(Collectors.toList());
 
-        long x = 0;
-        for (int i = 0; i < t.length; i++) {
-            x += remainders.get(i)[1] * t[i] * (M / remainders.get(i)[0]);
-        }
+        long x = IntStream.range(0, t.size())
+                .mapToLong(i -> remainders.get(i)[1] * t.get(i) * (M / remainders.get(i)[0]))
+                .sum();
 
         while (x - M > 0) {
             x -= M;
